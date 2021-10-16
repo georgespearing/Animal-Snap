@@ -7,6 +7,5 @@ The app will be based off the one shown in class, except with animals. The user 
 ## UI Design
 An example interface is shown below, modeled off of the demonstration in class. 
 
-// image here
+![UI concept Design](ui_concept.png)
 
-// image here

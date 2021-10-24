@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		442CEC6A2724BD2300C8026D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CEC692724BD2300C8026D /* AppDelegate.swift */; };
 		442CEC6C2724BD2300C8026D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CEC6B2724BD2300C8026D /* SceneDelegate.swift */; };
-		442CEC6E2724BD2300C8026D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CEC6D2724BD2300C8026D /* ViewController.swift */; };
 		442CEC712724BD2300C8026D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 442CEC6F2724BD2300C8026D /* Main.storyboard */; };
 		442CEC732724BD2400C8026D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 442CEC722724BD2400C8026D /* Assets.xcassets */; };
 		442CEC762724BD2400C8026D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 442CEC742724BD2400C8026D /* LaunchScreen.storyboard */; };
 		442CEC812724BD2500C8026D /* AnimalSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CEC802724BD2500C8026D /* AnimalSnapTests.swift */; };
 		442CEC8B2724BD2500C8026D /* AnimalSnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CEC8A2724BD2500C8026D /* AnimalSnapUITests.swift */; };
 		442CEC8D2724BD2500C8026D /* AnimalSnapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442CEC8C2724BD2500C8026D /* AnimalSnapUITestsLaunchTests.swift */; };
+		44A02AC62724DDB1000EFEBA /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A02AC52724DDB1000EFEBA /* ItemsViewController.swift */; };
+		44A02AC82724DFF6000EFEBA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A02AC72724DFF6000EFEBA /* Item.swift */; };
+		44A02ACA2724E49D000EFEBA /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A02AC92724E49D000EFEBA /* ItemStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,6 @@
 		442CEC662724BD2300C8026D /* AnimalSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		442CEC692724BD2300C8026D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		442CEC6B2724BD2300C8026D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		442CEC6D2724BD2300C8026D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		442CEC702724BD2300C8026D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		442CEC722724BD2400C8026D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		442CEC752724BD2400C8026D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		442CEC862724BD2500C8026D /* AnimalSnapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimalSnapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		442CEC8A2724BD2500C8026D /* AnimalSnapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalSnapUITests.swift; sourceTree = "<group>"; };
 		442CEC8C2724BD2500C8026D /* AnimalSnapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalSnapUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44A02AC52724DDB1000EFEBA /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		44A02AC72724DFF6000EFEBA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		44A02AC92724E49D000EFEBA /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 		442CEC682724BD2300C8026D /* AnimalSnap */ = {
 			isa = PBXGroup;
 			children = (
+				44A02AC52724DDB1000EFEBA /* ItemsViewController.swift */,
 				442CEC692724BD2300C8026D /* AppDelegate.swift */,
 				442CEC6B2724BD2300C8026D /* SceneDelegate.swift */,
-				442CEC6D2724BD2300C8026D /* ViewController.swift */,
 				442CEC6F2724BD2300C8026D /* Main.storyboard */,
+				44A02AC72724DFF6000EFEBA /* Item.swift */,
+				44A02AC92724E49D000EFEBA /* ItemStore.swift */,
 				442CEC722724BD2400C8026D /* Assets.xcassets */,
 				442CEC742724BD2400C8026D /* LaunchScreen.storyboard */,
 				442CEC772724BD2400C8026D /* Info.plist */,
@@ -258,8 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				442CEC6E2724BD2300C8026D /* ViewController.swift in Sources */,
+				44A02AC82724DFF6000EFEBA /* Item.swift in Sources */,
+				44A02AC62724DDB1000EFEBA /* ItemsViewController.swift in Sources */,
 				442CEC6A2724BD2300C8026D /* AppDelegate.swift in Sources */,
+				44A02ACA2724E49D000EFEBA /* ItemStore.swift in Sources */,
 				442CEC6C2724BD2300C8026D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

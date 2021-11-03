@@ -7,15 +7,60 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextFieldDelegate {
+class DetailViewController: UIViewController, UITextFieldDelegate,
+                            UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer){
         view.endEditing(true)
+    }
+    
+    @IBAction func choosePhotoSource(_ sender: UIBarButtonItem){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
+        // only show the camera if one exists
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) {_ in
+                //            print("Present Camera")
+                let imagePicker = self.imagePicker(for: .camera)
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+        }
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) {_ in
+            //            print("Present photo library")
+            let imagePicker = self.imagePicker(for: .photoLibrary)
+            imagePicker.modalPresentationStyle = .popover
+            imagePicker.popoverPresentationController?.barButtonItem = sender
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        alertController.addAction(photoLibraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // get picked image from info dictionary
+        let image = info[.originalImage] as! UIImage
+        
+        // put image on the screen in the image view
+        imageView.image = image
+        
+        // take image picker off the screen - you must call this dismiss method
+        dismiss(animated: true, completion: nil)
     }
     
     var item: Item! {
@@ -27,7 +72,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-
+        
         
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
@@ -53,7 +98,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
+    func imagePicker(for sourceType: UIImagePickerController.SourceType) -> UIImagePickerController{
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = self
+        return imagePicker
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()

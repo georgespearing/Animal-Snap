@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qzB-ok-Nkc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qzB-ok-Nkc">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Items View Controller-->
+        <!--AnimalSnap-->
         <scene sceneID="LWG-8D-5F0">
             <objects>
                 <tableViewController id="SAY-qg-vc7" customClass="ItemsViewController" customModule="AnimalSnap" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,44 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="epz-Vw-DTR">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOi-3P-pHd" userLabel="Add">
-                                    <rect key="frame" x="211" y="15" width="195" height="14"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Add"/>
-                                    <connections>
-                                        <action selector="addNewItem:" destination="SAY-qg-vc7" eventType="touchUpInside" id="Iou-bx-Nmu"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-Za-g01" userLabel="Edit">
-                                    <rect key="frame" x="8" y="15" width="195" height="14"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Edit"/>
-                                    <connections>
-                                        <action selector="toggleEditingMode:" destination="SAY-qg-vc7" eventType="touchUpInside" id="bHe-Fl-vEK"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="vb8-Za-g01" firstAttribute="leading" secondItem="epz-Vw-DTR" secondAttribute="leading" constant="8" id="6eA-0c-e4P"/>
-                                <constraint firstItem="vb8-Za-g01" firstAttribute="top" secondItem="epz-Vw-DTR" secondAttribute="top" constant="15" id="G7U-Mi-Kgi"/>
-                                <constraint firstItem="BOi-3P-pHd" firstAttribute="centerY" secondItem="epz-Vw-DTR" secondAttribute="centerY" id="KlS-pC-0G2"/>
-                                <constraint firstAttribute="bottom" secondItem="BOi-3P-pHd" secondAttribute="bottom" constant="15" id="TMl-6q-NWh"/>
-                                <constraint firstAttribute="bottom" secondItem="vb8-Za-g01" secondAttribute="bottom" constant="15" id="f5w-Sf-tMB"/>
-                                <constraint firstItem="BOi-3P-pHd" firstAttribute="leading" secondItem="vb8-Za-g01" secondAttribute="trailing" constant="8" id="hqD-vy-8hT"/>
-                                <constraint firstAttribute="trailing" secondItem="BOi-3P-pHd" secondAttribute="trailing" constant="8" id="mzG-SF-Jgl"/>
-                                <constraint firstItem="vb8-Za-g01" firstAttribute="centerY" secondItem="epz-Vw-DTR" secondAttribute="centerY" id="otE-vn-rru"/>
-                                <constraint firstItem="BOi-3P-pHd" firstAttribute="width" secondItem="vb8-Za-g01" secondAttribute="width" id="uBx-QL-Kh0"/>
-                                <constraint firstItem="BOi-3P-pHd" firstAttribute="top" secondItem="epz-Vw-DTR" secondAttribute="top" constant="15" id="vww-8f-hSQ"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="65" id="343-2n-51d" customClass="ItemCell" customModule="AnimalSnap" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88.666666030883789" width="414" height="65"/>
+                                <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="343-2n-51d" id="ukp-6i-Tgo">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
@@ -101,7 +66,13 @@
                             <outlet property="delegate" destination="SAY-qg-vc7" id="fbp-8a-6t3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="DAn-d0-6sb"/>
+                    <navigationItem key="navigationItem" title="AnimalSnap" id="YFp-qc-WVe">
+                        <barButtonItem key="rightBarButtonItem" title="+" systemItem="add" id="e5g-P4-TDS">
+                            <connections>
+                                <action selector="addNewItem:" destination="SAY-qg-vc7" id="CPK-gv-Xyx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQk-8n-T3G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,6 +102,9 @@
                                                 <rect key="frame" x="46" y="0.0" width="328" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MPB-lI-DBX" id="RVw-0d-nIj"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -147,6 +121,9 @@
                                                 <rect key="frame" x="44.333333333333343" y="0.0" width="329.66666666666663" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MPB-lI-DBX" id="Wok-uw-Qh9"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -163,6 +140,9 @@
                                                 <rect key="frame" x="43.666666666666657" y="0.0" width="330.33333333333337" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="MPB-lI-DBX" id="fwj-Ew-d3b"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -181,12 +161,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nd1-0K-oa0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="GnF-Eg-aHJ" firstAttribute="leading" secondItem="nd1-0K-oa0" secondAttribute="leading" constant="20" id="5L6-m9-Sdb"/>
                             <constraint firstItem="GnF-Eg-aHJ" firstAttribute="top" secondItem="nd1-0K-oa0" secondAttribute="top" constant="8" id="aya-KA-Puv"/>
                             <constraint firstItem="nd1-0K-oa0" firstAttribute="bottom" secondItem="GnF-Eg-aHJ" secondAttribute="bottom" constant="8" id="cpf-At-kh3"/>
                             <constraint firstItem="nd1-0K-oa0" firstAttribute="trailing" secondItem="GnF-Eg-aHJ" secondAttribute="trailing" constant="20" id="iRA-xz-3k2"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xPC-8f-Adl" appends="YES" id="guI-gL-WwU"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="jmn-y2-oPb"/>
                     <connections>
@@ -197,6 +181,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kd-LY-9s8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xPC-8f-Adl">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="MPB-lI-DBX" id="LBk-zr-ghi"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1592.753623188406" y="88.858695652173921"/>
         </scene>

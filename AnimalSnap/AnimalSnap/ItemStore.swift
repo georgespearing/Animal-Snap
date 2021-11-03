@@ -22,7 +22,7 @@ class ItemStore {
         do {
             let data = try Data(contentsOf: itemArchiveURL)
             let unarchiver = PropertyListDecoder()
-            let items = try unarchiver.decode([Item].self, from:data)
+            let items = try unarchiver.decode([Item].self, from: data)
             allItems = items
         } catch{
             print("Error reading in saved items: \(error)")

@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     @IBOutlet var valueField: UITextField!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var clearImage: UIButton!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer){
         view.endEditing(true)
@@ -62,6 +63,33 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
             //            print("Present photo library")
             self.navigationController!.popViewController(animated: true)
         
+        
+        }
+        alertController.addAction(deleteAction)
+
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func deleteImage(_ sender: UIBarButtonItem){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
+        let deleteAction = UIAlertAction(title: "Clear Image", style: .default) {_ in
+            //            print("Present photo library")
+//            self.navigationController!.popViewController(animated: true)
+            self.imageStore.deleteImage(forKey: self.item.itemKey)
+            self.imageView.image = nil
+            self.clearImage.isHidden = true
+            
+        
         }
         alertController.addAction(deleteAction)
 
@@ -86,12 +114,14 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         
         // take image picker off the screen - you must call this dismiss method
         dismiss(animated: true, completion: nil)
+        self.clearImage.isHidden = false
+        
     }
     
     var item: Item! {
         didSet{
             navigationItem.title = item.name
-            navigationItem.leftBarButtonItem?.title = "Back"
+            navigationItem.leftBarButtonItem?.title = "back"
         }
     }
     
@@ -100,6 +130,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
+//        navigationItem.leftBarButtonItem!.title = "back"
         
         nameField.text = item.name
         serialNumberField.text = item.serialNumber
@@ -110,8 +141,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         let key = item.itemKey
         
         // if three is an associated image with the item, display it on the image view
-        let imageToDisplay = imageStore.image(forKey: key)
-        imageView.image = imageToDisplay
+        if let imageToDisplay = imageStore.image(forKey: key){
+            imageView.image = imageToDisplay
+            clearImage.isHidden = false
+        } else{
+            clearImage.isHidden = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool){

@@ -10,7 +10,7 @@ import UIKit
 class ItemStore {
     
     var allItems = [Item]()
-    
+    	
     let itemArchiveURL: URL = {
         let documentsDirectories =
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -31,6 +31,8 @@ class ItemStore {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(saveChanges),
                                        name: UIScene.didEnterBackgroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveChanges),
+                                       name: UIScene.didDisconnectNotification, object: nil)
     }
     
     @discardableResult func createItem() -> Item {

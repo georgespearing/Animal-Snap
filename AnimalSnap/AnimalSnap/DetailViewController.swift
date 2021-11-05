@@ -52,6 +52,28 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func deleteEntry(_ sender: UIBarButtonItem){
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.modalPresentationStyle = .popover
+        alertController.popoverPresentationController?.barButtonItem = sender
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) {_ in
+            //            print("Present photo library")
+            self.navigationController!.popViewController(animated: true)
+        
+        }
+        alertController.addAction(deleteAction)
+
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // get picked image from info dictionary
         let image = info[.originalImage] as! UIImage

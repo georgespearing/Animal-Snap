@@ -169,6 +169,12 @@
                                             <action selector="choosePhotoSource:" destination="MPB-lI-DBX" id="KlN-wI-Ifv"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="308" style="plain" systemItem="fixedSpace" id="9te-ii-gla"/>
+                                    <barButtonItem systemItem="trash" id="iqJ-9d-w5m">
+                                        <connections>
+                                            <action selector="deleteEntry:" destination="MPB-lI-DBX" id="6so-CE-jNG"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

@@ -9,3 +9,10 @@ An example interface is shown below, modeled off of the demonstration in class.
 
 ![UI concept Design](ui_concept.png)
 
+
+### TODO: Adding Functionality 
+
+ - Convert price value to star ratings
+ - persist images on exit
+ - delete popup from menu
+ - delete will actually delete the thing

@@ -110,9 +110,12 @@ class ItemsViewController: UITableViewController{
         
         // configure the cell with the Item
         cell.nameLabel.text=item.name
-        cell.serialNumberLabel.text = item.serialNumber
-        cell.valueLabel.text = "$\(item.valueInDollars)"
-        if (item.valueInDollars >= 50){
+//        cell.serialNumberLabel.text = item.serialNumber
+        cell.locationLabel.text = item.locationValue
+//        cell.locationLabel.lineBreakMode = .byTruncatingMiddle
+//        cell.locationLabel.numberOfLines = 2
+        cell.valueLabel.text = "\(item.valueInDollars)"
+        if (item.valueInDollars >= 5){
             cell.valueLabel.textColor = UIColor.red
         } else{
             cell.valueLabel.textColor = UIColor.green

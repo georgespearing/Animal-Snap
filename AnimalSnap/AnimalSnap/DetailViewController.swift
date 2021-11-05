@@ -56,6 +56,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         // get picked image from info dictionary
         let image = info[.originalImage] as! UIImage
         
+        // store the image in the imagestore for the item's key
+        imageStore.setImage(image, forKey: item.itemKey)
+        
         // put image on the screen in the image view
         imageView.image = image
         
@@ -70,6 +73,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         }
     }
     
+    var imageStore: ImageStore!
+    
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
@@ -78,6 +83,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         serialNumberField.text = item.serialNumber
         valueField.text = "\(item.valueInDollars)"
         dateLabel.text = "\(item.dateCreated)"
+        
+        // get the item key
+        let key = item.itemKey
+        
+        // if three is an associated image with the item, display it on the image view
+        let imageToDisplay = imageStore.image(forKey: key)
+        imageView.image = imageToDisplay
     }
     
     override func viewWillDisappear(_ animated: Bool){

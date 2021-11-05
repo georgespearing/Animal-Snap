@@ -13,6 +13,7 @@ class Item: Equatable, Codable{
     var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: Date
+    let itemKey: String
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -21,6 +22,8 @@ class Item: Equatable, Codable{
         valueInDollars = try container.decode(Int.self, forKey: .valueInDollars)
         serialNumber = try container.decode(String?.self, forKey: .serialNumber)
         dateCreated = try container.decode(Date.self, forKey: .dateCreated)
+        itemKey = UUID().uuidString
+
 
         let categoryString = try container.decode(String.self, forKey: .category)
         switch categoryString {
@@ -42,6 +45,7 @@ class Item: Equatable, Codable{
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
         self.dateCreated = Date()
+        self.itemKey = UUID().uuidString
 
     }
 

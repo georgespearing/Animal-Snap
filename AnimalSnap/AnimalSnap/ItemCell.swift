@@ -2,8 +2,8 @@
 //  ItemCell.swift
 //  AnimalSnap
 //
-//  Created by user203264 on 10/31/21.
-//
+//  Created by George Spearing on 10/31/21.
+//  Cell class for types of content the protype cell will include
 
 import UIKit
 

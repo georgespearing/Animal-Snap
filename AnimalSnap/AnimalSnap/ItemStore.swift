@@ -2,8 +2,8 @@
 //  ItemStore.swift
 //  AnimalSnap
 //
-//  Created by user203264 on 10/23/21.
-//
+//  Created by George Spearing on 10/23/21.
+// Class to store all the items created in the views
 
 import UIKit
 

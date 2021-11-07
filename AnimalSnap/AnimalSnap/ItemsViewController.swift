@@ -33,13 +33,9 @@ class ItemsViewController: UITableViewController{
     }
     
     @IBAction func addNewItem(_ sender: UIBarButtonItem){
-//        // make a new index path for the 0 section, last row
-//        let lastRow = tableView.numberOfRows(inSection: 0)
-//        let indexPath = IndexPath(row: lastRow, section: 0)
-//
-//        // insert this new row into the table
-//        tableView.insertRows(at: [indexPath], with: .automatic)
-        
+//       // make a new index path for the 0 section, last row
+
+//       // insert this new row into the table
         // Create a new item and add it to the store
         let newItem = itemStore.createItem()
         
@@ -52,23 +48,7 @@ class ItemsViewController: UITableViewController{
             
         }
     }
-    
-//    @IBAction func toggleEditingMode(_ sender: UIButton){
-//        // if you are currently in editing mode...
-//        if isEditing {
-//            // change text of button to inform user of state
-//            sender.setTitle("Edit", for: .normal)
-//
-//            // turn off editing mode
-//            setEditing(false, animated: true)
-//        } else{
-//            // change text of button
-//            sender.setTitle("Done", for: .normal)
-//
-//            // enter editing mode
-//            setEditing(true, animated: true)
-//        }
-//    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         // if the triggered segue is the "showItem" segue
@@ -95,10 +75,7 @@ class ItemsViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
 //        // create instance of UITableViewCell with default appearance
-//        let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell")
-        
         // get a new or recycled cell
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         // set the text on the cell with the description of the item
@@ -106,15 +83,9 @@ class ItemsViewController: UITableViewController{
         // will appear in on the table view
         let item = itemStore.allItems[indexPath.row]
         
-//        cell.textLabel?.text = item.name
-//        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
-        
         // configure the cell with the Item
         cell.nameLabel.text=item.name
-//        cell.serialNumberLabel.text = item.serialNumber
         cell.locationLabel.text = item.locationValue
-//        cell.locationLabel.lineBreakMode = .byTruncatingMiddle
-//        cell.locationLabel.numberOfLines = 2
         cell.valueLabel.text = "\(item.valueInDollars)"
         if (item.valueInDollars >= 5){
             cell.valueLabel.textColor = UIColor.green
@@ -157,18 +128,7 @@ class ItemsViewController: UITableViewController{
             present(alertController, animated: true, completion: nil)
             
         }
-//        if userDidDelete{
-//            let item = itemStore.allItems[indexPath.row]
-//
-//            // Remove the item from the store
-//            itemStore.removeItem(item)
-//
-//            // remove the item's image from the image store
-//            imageStore.deleteImage(forKey: item.itemKey)
-//
-//            // also remove that row from the table view with an animation
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
+
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath){

@@ -2,7 +2,9 @@
 //  DetailViewController.swift
 //  AnimalSnap
 //
-//  Created by user203264 on 10/31/21.
+//  Created by George Spearing on 10/31/21.
+//
+//  View for the user to edit the contents of the item
 //
 
 import UIKit
@@ -10,14 +12,25 @@ import UIKit
 class DetailViewController: UIViewController, UITextFieldDelegate,
                             UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
+    // MARK: - Initialize
+    
     @IBOutlet var nameField: UITextField!
-//    @IBOutlet var serialNumberField: UITextField!
     @IBOutlet var locationField: UITextField!
     @IBOutlet var valueField: UITextField!
-//    @IBOutlet var dateLabel: UILabel!
     @IBOutlet var descriptionField: UITextView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var clearImage: UIButton!
+    
+    var item: Item! {
+        didSet{
+            navigationItem.title = item.name
+            navigationItem.leftBarButtonItem?.title = "back"
+        }
+    }
+    
+    var imageStore: ImageStore!
+    
+    var itemStore: ItemStore!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer){
         view.endEditing(true)
@@ -55,6 +68,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - Deleting items and photos
+    
     @IBAction func deleteEntry(_ sender: UIBarButtonItem){
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -87,8 +102,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         alertController.popoverPresentationController?.barButtonItem = sender
         
         let deleteAction = UIAlertAction(title: "Clear Image", style: .default) {_ in
-            //            print("Present photo library")
-//            self.navigationController!.popViewController(animated: true)
             self.imageStore.deleteImage(forKey: self.item.itemKey)
             self.imageView.image = nil
             self.clearImage.isHidden = true
@@ -106,6 +119,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         
     }
     
+    // MARK: - Image selection
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // get picked image from info dictionary
         let image = info[.originalImage] as! UIImage
@@ -122,27 +137,22 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         
     }
     
-    var item: Item! {
-        didSet{
-            navigationItem.title = item.name
-            navigationItem.leftBarButtonItem?.title = "back"
-        }
+    func imagePicker(for sourceType: UIImagePickerController.SourceType) -> UIImagePickerController{
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.delegate = self
+        return imagePicker
     }
     
-    var imageStore: ImageStore!
-    
-    var itemStore: ItemStore!
+    // MARK: - View controls
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
-//        navigationItem.leftBarButtonItem!.title = "back"
-        
         nameField.text = item.name
-//        serialNumberField.text = item.serialNumber
         locationField.text = item.locationValue
         valueField.text = "\(item.valueInDollars)"
-//        dateLabel.text = "\(item.dateCreated)"
         descriptionField.text = item.textDescription
         
         
@@ -178,13 +188,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         }
     }
     
-    func imagePicker(for sourceType: UIImagePickerController.SourceType) -> UIImagePickerController{
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = sourceType
-        imagePicker.delegate = self
-        return imagePicker
-    }
+    // MARK: - Formatting
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{
         textField.resignFirstResponder()

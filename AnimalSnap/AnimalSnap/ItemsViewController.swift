@@ -84,8 +84,15 @@ class ItemsViewController: UITableViewController{
         let item = itemStore.allItems[indexPath.row]
         
         // configure the cell with the Item
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+//            dateFormatter.timeStyle = DateFormatter.Style.short
+
+        let strDate = dateFormatter.string(from: item.locationValue)
+        
         cell.nameLabel.text=item.name
-        cell.locationLabel.text = item.locationValue
+        cell.locationLabel.text = strDate
         cell.valueLabel.text = "\(item.valueInDollars)"
         if (item.valueInDollars >= 5){
             cell.valueLabel.textColor = UIColor.green

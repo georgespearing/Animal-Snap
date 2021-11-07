@@ -15,7 +15,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     // MARK: - Initialize
     
     @IBOutlet var nameField: UITextField!
-    @IBOutlet var locationField: UITextField!
+    @IBOutlet var locationField: UIDatePicker!
     @IBOutlet var valueField: UITextField!
     @IBOutlet var descriptionField: UITextView!
     @IBOutlet var imageView: UIImageView!
@@ -151,7 +151,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         super.viewWillAppear(animated)
         
         nameField.text = item.name
-        locationField.text = item.locationValue
+        locationField.date = item.locationValue
         valueField.text = "\(item.valueInDollars)"
         descriptionField.text = item.textDescription
         
@@ -177,7 +177,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         // "save" changes to item
         item.name = nameField.text ?? ""
 //        item.serialNumber = serialNumberField.text
-        item.locationValue = locationField.text
+        item.locationValue = locationField.date
         item.textDescription = descriptionField.text
         
         if let valueText = valueField.text,

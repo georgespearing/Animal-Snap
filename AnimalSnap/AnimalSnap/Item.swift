@@ -11,7 +11,7 @@ import UIKit
 class Item: Equatable, Codable{
     var name: String
     var valueInDollars: Int
-    var locationValue: String?
+    var locationValue: Date
     var textDescription: String?
     let itemKey: String
     
@@ -19,7 +19,7 @@ class Item: Equatable, Codable{
         self.name = name
         self.valueInDollars = valueInDollars
 //        self.serialNumber = serialNumber
-        self.locationValue = ""
+        self.locationValue = Date()
 //        self.dateCreated = Date()
         self.textDescription = "Description"
         self.itemKey = UUID().uuidString

@@ -19,4 +19,13 @@ An example interface is shown below, modeled off of the demonstration in class.
 
  - The camera functionaility "should" work. Was not tested due to only working in the simulator, no camera functionailty. The code is there, but not tested
 
+## UI Final Design
+
+The finished Design for the main view and the detail view. This includes one [empty] block that happens when pressing the "+" button. 
+
+![Final_Design](final_view.png)
+
+The view for when editing the new item. Shows no "clear image" button since there's no image to clear yet. The delete icon will delete the item. The camera button will add an image from either the phone library or the camaera (camera functionality not tested)
+
+![New_Item](new_items.png)
 

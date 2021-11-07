@@ -15,6 +15,16 @@ class Item: Equatable, Codable{
     var textDescription: String?
     let itemKey: String
     
+    init(name: String, valueInDollars: Int){
+        self.name = name
+        self.valueInDollars = valueInDollars
+//        self.serialNumber = serialNumber
+        self.locationValue = ""
+//        self.dateCreated = Date()
+        self.textDescription = "Description"
+        self.itemKey = UUID().uuidString
+
+    }
     
     convenience init(random: Bool = false){
             self.init(name: "[EMPTY]", valueInDollars:1)

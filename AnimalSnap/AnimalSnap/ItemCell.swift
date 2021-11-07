@@ -10,7 +10,8 @@ import UIKit
 class ItemCell: UITableViewCell{
     
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var serialNumberLabel: UILabel!
+//    @IBOutlet var serialNumberLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
     @IBOutlet var valueLabel: UILabel!
     
 }

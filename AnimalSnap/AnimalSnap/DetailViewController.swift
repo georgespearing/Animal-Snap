@@ -11,9 +11,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
                             UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     @IBOutlet var nameField: UITextField!
-    @IBOutlet var serialNumberField: UITextField!
+//    @IBOutlet var serialNumberField: UITextField!
+    @IBOutlet var locationField: UITextField!
     @IBOutlet var valueField: UITextField!
-    @IBOutlet var dateLabel: UILabel!
+//    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var descriptionField: UITextView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var clearImage: UIButton!
     
@@ -61,6 +63,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         
         let deleteAction = UIAlertAction(title: "Delete", style: .default) {_ in
             //            print("Present photo library")
+            
+            self.itemStore.removeItem(self.item)
             self.navigationController!.popViewController(animated: true)
         
         
@@ -127,15 +131,20 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     
     var imageStore: ImageStore!
     
+    var itemStore: ItemStore!
+    
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
 //        navigationItem.leftBarButtonItem!.title = "back"
         
         nameField.text = item.name
-        serialNumberField.text = item.serialNumber
+//        serialNumberField.text = item.serialNumber
+        locationField.text = item.locationValue
         valueField.text = "\(item.valueInDollars)"
-        dateLabel.text = "\(item.dateCreated)"
+//        dateLabel.text = "\(item.dateCreated)"
+        descriptionField.text = item.textDescription
+        
         
         // get the item key
         let key = item.itemKey
@@ -157,7 +166,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         
         // "save" changes to item
         item.name = nameField.text ?? ""
-        item.serialNumber = serialNumberField.text
+//        item.serialNumber = serialNumberField.text
+        item.locationValue = locationField.text
+        item.textDescription = descriptionField.text
         
         if let valueText = valueField.text,
            let value = numberFormatter.number(from: valueText){

@@ -9,7 +9,7 @@ import UIKit
 
 class ItemsViewController: UITableViewController{
     
-    var itemStore: ItemStore!
+    var itemStore: AnimalStore!
     var imageStore: ImageStore!
     
     required init?(coder aDecoder: NSCoder){
@@ -107,14 +107,15 @@ class ItemsViewController: UITableViewController{
                             forRowAt indexPath: IndexPath){
         // if the table view is asking to commit a delete command
         if editingStyle == .delete{
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let item = self.itemStore.allItems[indexPath.row]
+            let alertController = UIAlertController(title: "Are you sure you want to delte \(item.name)?", message: nil, preferredStyle: .alert)
             
             alertController.modalPresentationStyle = .popover
 //            alertController.popoverPresentationController?.barButtonItem = tableView
             
-            let deleteAction = UIAlertAction(title: "Delete", style: .default) {_ in
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {_ in
                 //            print("Present photo library")
-                let item = self.itemStore.allItems[indexPath.row]
+//                let item = self.itemStore.allItems[indexPath.row]
                 
                 // Remove the item from the store
                 self.itemStore.removeItem(item)

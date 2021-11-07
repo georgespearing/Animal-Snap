@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         // create an ItemStore
-        let itemStore = ItemStore()
+        let itemStore = AnimalStore()
         
         // create an ImageStore
         let imageStore = ImageStore()

@@ -21,7 +21,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var clearImage: UIButton!
     
-    var item: Item! {
+    var item: Animal! {
         didSet{
             navigationItem.title = item.name
             navigationItem.leftBarButtonItem?.title = "back"
@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     
     var imageStore: ImageStore!
     
-    var itemStore: ItemStore!
+    var itemStore: AnimalStore!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer){
         view.endEditing(true)
@@ -71,14 +71,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     // MARK: - Deleting items and photos
     
     @IBAction func deleteEntry(_ sender: UIBarButtonItem){
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Are you sure you want to delte \(item.name)?", message: nil, preferredStyle: .alert)
         
         alertController.modalPresentationStyle = .popover
         alertController.popoverPresentationController?.barButtonItem = sender
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .default) {_ in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {_ in
             //            print("Present photo library")
-            
             self.itemStore.removeItem(self.item)
             self.navigationController!.popViewController(animated: true)
         
@@ -101,7 +100,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         alertController.modalPresentationStyle = .popover
         alertController.popoverPresentationController?.barButtonItem = sender
         
-        let deleteAction = UIAlertAction(title: "Clear Image", style: .default) {_ in
+        let deleteAction = UIAlertAction(title: "Clear Image", style: .destructive) {_ in
             self.imageStore.deleteImage(forKey: self.item.itemKey)
             self.imageView.image = nil
             self.clearImage.isHidden = true

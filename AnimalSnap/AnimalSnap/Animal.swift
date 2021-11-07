@@ -8,7 +8,7 @@
 import UIKit
 
 
-class Item: Equatable, Codable{
+class Animal: Equatable, Codable{
     var name: String
     var valueInDollars: Int
     var locationValue: Date
@@ -27,11 +27,22 @@ class Item: Equatable, Codable{
     }
     
     convenience init(random: Bool = false){
-            self.init(name: "[EMPTY]", valueInDollars:1)
+        
+        if random{
+            let nouns = ["Bear", "Penguin", "Dog"]
+                    
+            let randomNoun = nouns.randomElement()!
+                    
+            let randomValue = Int.random(in: 0..<10)
 
+            self.init(name: randomNoun, valueInDollars: randomValue)
+        }
+        else{
+            self.init(name: "[EMPTY]", valueInDollars:1)
+        }
     }
     
-    static func == (lhs: Item, rhs: Item) -> Bool {
+    static func == (lhs: Animal, rhs: Animal) -> Bool {
         return lhs.name == rhs.name &&
         lhs.locationValue == rhs.locationValue &&
         lhs.valueInDollars == rhs.valueInDollars &&

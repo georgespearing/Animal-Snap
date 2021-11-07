@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ItemStore {
+class AnimalStore {
     
-    var allItems = [Item]()
+    var allItems = [Animal]()
     	
     let itemArchiveURL: URL = {
         let documentsDirectories =
@@ -22,10 +22,12 @@ class ItemStore {
         do {
             let data = try Data(contentsOf: itemArchiveURL)
             let unarchiver = PropertyListDecoder()
-            let items = try unarchiver.decode([Item].self, from: data)
+            let items = try unarchiver.decode([Animal].self, from: data)
             allItems = items
         } catch{
             print("Error reading in saved items: \(error)")
+            let newItem = Animal(random: true)
+            allItems.append(newItem)
         }
         
         let notificationCenter = NotificationCenter.default
@@ -35,8 +37,8 @@ class ItemStore {
                                        name: UIScene.didDisconnectNotification, object: nil)
     }
     
-    @discardableResult func createItem() -> Item {
-        let newItem = Item(random: true)
+    @discardableResult func createItem() -> Animal {
+        let newItem = Animal(random: false)
         allItems.append(newItem)
         
         return newItem
@@ -57,7 +59,7 @@ class ItemStore {
     
     }
     
-    func removeItem(_ item: Item){
+    func removeItem(_ item: Animal){
         if let index = allItems.firstIndex(of: item){
             allItems.remove(at: index)
         }

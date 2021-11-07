@@ -9,10 +9,14 @@ An example interface is shown below, modeled off of the demonstration in class.
 
 ![UI concept Design](ui_concept.png)
 
+## UPDATES
 
-### TODO: Adding Functionality 
+ - User can score the animal pictures using the ratings
+ 
+ - deleting from either view works now
 
- - Convert price value to star ratings
- - persist images on exit
- - delete popup from menu
- - delete will actually delete the thing
+ - Same grouping function was not implemented
+
+ - The camera functionaility "should" work. Was not tested due to only working in the simulator, no camera functionailty. The code is there, but not tested
+
+

@@ -11,8 +11,10 @@ import UIKit
 class Item: Equatable, Codable{
     var name: String
     var valueInDollars: Int
-    var serialNumber: String?
-    let dateCreated: Date
+//    var serialNumber: String?
+    var locationValue: String?
+//    let dateCreated: Date
+    var textDescription: String?
     let itemKey: String
     
 //    required init(from decoder: Decoder) throws {
@@ -40,11 +42,13 @@ class Item: Equatable, Codable{
 //        }
 //    }
 
-    init(name: String, serialNumber: String?, valueInDollars: Int){
+    init(name: String, valueInDollars: Int){
         self.name = name
         self.valueInDollars = valueInDollars
-        self.serialNumber = serialNumber
-        self.dateCreated = Date()
+//        self.serialNumber = serialNumber
+        self.locationValue = ""
+//        self.dateCreated = Date()
+        self.textDescription = "Description"
         self.itemKey = UUID().uuidString
 
     }
@@ -91,29 +95,30 @@ class Item: Equatable, Codable{
    
     
     convenience init(random: Bool = false){
-        if random{
-            let adjectives = ["Fluffy", "Rusty", "Shiny"]
-            let nouns = ["Bear", "Spork", "Mac"]
-            
-            let randomAdjective = adjectives.randomElement()!
-            let randomNoun = nouns.randomElement()!
-            
-            let randomName = "\(randomAdjective) \(randomNoun)"
-            let randomValue = Int.random(in: 0..<100)
-            let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first!
-            
-            self.init(name: randomName, serialNumber: randomSerialNumber, valueInDollars: randomValue)
-            
-        } else{
-            self.init(name: "", serialNumber: nil, valueInDollars:0)
-        }
+//        if random{
+//            let adjectives = ["Fluffy", "Rusty", "Shiny"]
+//            let nouns = ["Bear", "Spork", "Mac"]
+//
+//            let randomAdjective = adjectives.randomElement()!
+//            let randomNoun = nouns.randomElement()!
+//
+//            let randomName = "\(randomAdjective) \(randomNoun)"
+////            let randomValue = Int.random(in: 0..<100)
+//            let startValue = 1
+////            let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first!
+//            self.init(name: randomName, valueInDollars: startValue)
+//
+//        } else{
+            self.init(name: "[EMPTY]", valueInDollars:1)
+//        }
     }
     
     static func == (lhs: Item, rhs: Item) -> Bool {
         return lhs.name == rhs.name &&
-        lhs.serialNumber == rhs.serialNumber &&
+        lhs.locationValue == rhs.locationValue &&
         lhs.valueInDollars == rhs.valueInDollars &&
-        lhs.dateCreated == rhs.dateCreated
+//        lhs.dateCreated == rhs.dateCreated
+        lhs.textDescription == rhs.textDescription
     }
     
 }

@@ -81,6 +81,7 @@ class ItemsViewController: UITableViewController{
                 let detailViewController = segue.destination as! DetailViewController
                 detailViewController.item = item
                 detailViewController.imageStore = imageStore
+                detailViewController.itemStore = itemStore
             }
         default:
             preconditionFailure("Unexpected segue Identifier")
@@ -116,9 +117,9 @@ class ItemsViewController: UITableViewController{
 //        cell.locationLabel.numberOfLines = 2
         cell.valueLabel.text = "\(item.valueInDollars)"
         if (item.valueInDollars >= 5){
-            cell.valueLabel.textColor = UIColor.red
-        } else{
             cell.valueLabel.textColor = UIColor.green
+        } else{
+            cell.valueLabel.textColor = UIColor.red
         }
         
         return cell
@@ -128,17 +129,46 @@ class ItemsViewController: UITableViewController{
                             forRowAt indexPath: IndexPath){
         // if the table view is asking to commit a delete command
         if editingStyle == .delete{
-            let item = itemStore.allItems[indexPath.row]
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            // Remove the item from the store
-            itemStore.removeItem(item)
+            alertController.modalPresentationStyle = .popover
+//            alertController.popoverPresentationController?.barButtonItem = tableView
             
-            // remove the item's image from the image store
-            imageStore.deleteImage(forKey: item.itemKey)
+            let deleteAction = UIAlertAction(title: "Delete", style: .default) {_ in
+                //            print("Present photo library")
+                let item = self.itemStore.allItems[indexPath.row]
+                
+                // Remove the item from the store
+                self.itemStore.removeItem(item)
+                
+                // remove the item's image from the image store
+                self.imageStore.deleteImage(forKey: item.itemKey)
+                
+                // also remove that row from the table view with an animation
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            alertController.addAction(deleteAction)
+
             
-            // also remove that row from the table view with an animation
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            
+            present(alertController, animated: true, completion: nil)
+            
         }
+//        if userDidDelete{
+//            let item = itemStore.allItems[indexPath.row]
+//
+//            // Remove the item from the store
+//            itemStore.removeItem(item)
+//
+//            // remove the item's image from the image store
+//            imageStore.deleteImage(forKey: item.itemKey)
+//
+//            // also remove that row from the table view with an animation
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//        }
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath){

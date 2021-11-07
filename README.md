@@ -27,5 +27,5 @@ The finished Design for the main view and the detail view. This includes one [em
 
 The view for when editing the new item. Shows no "clear image" button since there's no image to clear yet. The delete icon will delete the item. The camera button will add an image from either the phone library or the camaera (camera functionality not tested)
 
-![New_Item](new_items.png)
+![New_Item](new_item.png)
 
